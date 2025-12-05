@@ -8,6 +8,8 @@ from urllib.request import Request, urlopen
 
 gecko = TCPGecko(sys.argv[1])  # Your Wii U's LAN IP address goes here (eg. "192.168.1.1").
 
+print("\nGeckoPIDGrabber 1.0 by Shadow Doggo\n")
+
 player_ptr = int.from_bytes(
     gecko.readmem(int.from_bytes(gecko.readmem(0x106E0330, 4), "big") + 0x10, 4), "big"
 )  # Load pointer-in-pointer.
@@ -47,8 +49,8 @@ if session_ptr != 0:
     session_idx = int.from_bytes(gecko.readmem(session_ptr + 0xBD, 1), "big")
     session_id = int.from_bytes(gecko.readmem(session_ptr + session_idx + 0xCC, 4), "big")
 
-    print(f"Session ID: {session_id:X} ({session_id})")
+    print(f"\nSession ID: {session_id:X} ({session_id})")
 else:
-    print("Session ID: None")
+    print("\nSession ID: None")
 
-print(f"Fetched at: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}")
+print(f"\nFetched at: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}")
