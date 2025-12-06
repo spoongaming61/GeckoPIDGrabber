@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 
 gecko = TCPGecko(sys.argv[1])  # Your Wii U's LAN IP address goes here.
 
-print("\nGeckoPIDGrabber 1.0 by Shadow Doggo\n")
+print("\nGeckoPIDGrabber by Shadow Doggo\n")
 
 player_ptr = int.from_bytes(
     gecko.readmem(int.from_bytes(gecko.readmem(0x106E0330, 4), "big") + 0x10, 4), "big"
