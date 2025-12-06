@@ -6,7 +6,7 @@ from datetime import datetime
 from tcpgecko import TCPGecko
 from urllib.request import Request, urlopen
 
-gecko = TCPGecko(sys.argv[1])  # Your Wii U's LAN IP address goes here (eg. "192.168.1.1").
+gecko = TCPGecko(sys.argv[1])  # Your Wii U's LAN IP address goes here.
 
 print("\nGeckoPIDGrabber 1.0 by Shadow Doggo\n")
 
@@ -30,7 +30,7 @@ for offset in range(0x0, 0x1D, 0x4):
         f"http://account.pretendo.cc/v1/api/miis?pids={player_pid}",
         headers = {"X-Nintendo-Client-ID": "a2efa818a34fa16b8afbc8a74eba3eda",
         "X-Nintendo-Client-Secret": "c91cdb5658bd4954ade78533a339cf9a"}
-        )
+        )  # Get user data from account server.
 
         try:
             response = ET.fromstring(urlopen(req).read().decode("utf-8"))
@@ -39,7 +39,7 @@ for offset in range(0x0, 0x1D, 0x4):
             epic_fail = True
 
     print(
-        f"Player {offset // 0x4 + 1} | PID: {player_pid:X} ({player_pid}) | "
+        f"Player {offset // 0x4 + 1} | PID: {player_pid:X} ({player_pid}){" " * 16 if player_pid == 0 else ""} | "
         f"PNID: {player_pnid} {" " * (16 - len(player_pnid))}| Name: {player_name}"
         )
 
