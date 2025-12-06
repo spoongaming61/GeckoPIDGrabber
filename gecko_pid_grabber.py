@@ -28,8 +28,10 @@ for offset in range(0x0, 0x1D, 0x4):
     if player_pid != 0:
         req = Request(
         f"http://account.pretendo.cc/v1/api/miis?pids={player_pid}",
-        headers = {"X-Nintendo-Client-ID": "a2efa818a34fa16b8afbc8a74eba3eda",
-        "X-Nintendo-Client-Secret": "c91cdb5658bd4954ade78533a339cf9a"}
+        headers = {
+            "X-Nintendo-Client-ID": "a2efa818a34fa16b8afbc8a74eba3eda",
+            "X-Nintendo-Client-Secret": "c91cdb5658bd4954ade78533a339cf9a"
+        }
         )  # Get user data from account server.
 
         try:
@@ -39,8 +41,8 @@ for offset in range(0x0, 0x1D, 0x4):
             epic_fail = True
 
     print(
-        f"Player {offset // 0x4 + 1} | PID: {player_pid:X} ({player_pid}){" " * 16 if player_pid == 0 else ""} | "
-        f"PNID: {player_pnid} {" " * (16 - len(player_pnid))}| Name: {player_name}"
+        f"Player {offset // 0x4 + 1} | PID: {player_pid:X} ({player_pid}){' ' * 16 if player_pid == 0 else ''} | "
+        f"PNID: {player_pnid} {' ' * (16 - len(player_pnid))}| Name: {player_name}"
         )
 
 if epic_fail: print("Failed to get PNID for one or more players.")
@@ -53,4 +55,4 @@ if session_ptr != 0:
 else:
     print("\nSession ID: None")
 
-print(f"\nFetched at: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}")
+print(f"\nFetched at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
