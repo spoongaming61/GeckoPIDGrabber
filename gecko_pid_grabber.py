@@ -21,7 +21,8 @@ def main():
     if not auto_logging and logging_enabled:
         logger.new_match(gecko, auto_logging, session_ptr, 1)
 
-    print()
+    if not silent_logging:
+        print()
 
     for offset in range(0x0, 0x1D, 0x4):
         player = int.from_bytes(

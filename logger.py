@@ -113,7 +113,6 @@ class Logger:
                     time.sleep(10)
 
             winning_team = int.from_bytes(gecko.readmem(0x107AF917, 1), "big")
-            print(winning_team)
             stats = gecko.readmem(0x107AF944, 288)  # Read the updated stats again.
             offset = (player_num - 1) * 0x20
             points = int.from_bytes(stats[offset + 0x3A:offset + 0x3C], "big")
